@@ -1,5 +1,5 @@
 import React from 'react'
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import FastForwardIcon from '@mui/icons-material/FastForward';
 import { IconButton } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
 import CheckIcon from '@mui/icons-material/Check';
@@ -34,10 +34,10 @@ function QuizeQuestion(props) {
             <div className='flex flex-row h-auto w-auto px-8'>
                 {questionsComp}
             </div>
-            {selectedImage && <span className='absolute top-0 right-0 text-lg font-bold'>
+            {selectedImage && <span className='absolute bottom-0 right-0 text-lg font-bold'>
                 <Tooltip title="Next" placement="bottom" arrow>
                     <IconButton onClick={() => { props.handleAnswerSubmission() }}>
-                        <NavigateNextIcon sx={{ fontSize: 40, color: 'white' }} />
+                        <FastForwardIcon sx={{ fontSize: 40, color: 'white' }} />
                     </IconButton>
                 </Tooltip>
             </span>}
