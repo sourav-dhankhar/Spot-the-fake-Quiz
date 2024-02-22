@@ -3,19 +3,22 @@
     vertical-align: middle;
     margin: 0 0.2em 0.4ex;
     text-align: center;
-
-    &>div>span {
-        display: block;
-        padding-top: 0.15em;
-    }
 }
 
+.fraction > div > span {
+    display: block;
+    padding-top: 0.15em;
+}
 
 .fdn {
     border-top: thin solid black;
     font-weight: bold;
-    font-size: 1.5rem/* 24px */;
-    line-height: 2rem/* 32px */;
+    font-size: 1.5rem
+        /* 24px */
+    ;
+    line-height: 2rem
+        /* 32px */
+    ;
     color: black;
 }
 
