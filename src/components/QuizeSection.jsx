@@ -7,10 +7,15 @@ import Timer from './Timer';
 function QuizeSection(props) {
   const [attemptedQuestions, setAttemptedQuestions] = useState([]);
   const [selectedImage, setSelectedImage] = useState('');
+  const [timer, setTimer] = useState(false);
   const shuffledQuestionsRef = useRef([]);
   const questionNumber = attemptedQuestions.length;
 
   const quizCompleted = questionNumber == Quizquestions.length ? true : false;
+
+  function handleStartTimer(payload) {
+    setTimer(payload);
+  }
 
   function handleOnClick(answer) {
     setSelectedImage(answer);
@@ -22,6 +27,7 @@ function QuizeSection(props) {
       return [...prevAttemptedQues, currentImage];
     })
     setSelectedImage((prevState) => '');
+    setTimer(false);
   }
 
   if (!selectedImage && !quizCompleted) {
@@ -33,8 +39,8 @@ function QuizeSection(props) {
       <div className='relative h-5/6'>
         {!quizCompleted &&
           <>
-            <Timer questionNumber={questionNumber} handleAnswerSubmission={handleAnswerSubmission} />
-            <QuizeQuestion quizQuestion={Quizquestions} shuffledQuestionsRef={shuffledQuestionsRef} questionNumber={questionNumber} selectedImage={selectedImage} handleOnClick={handleOnClick} handleAnswerSubmission={handleAnswerSubmission} />
+            <Timer handleAnswerSubmission={handleAnswerSubmission} timer={timer} setTimer={handleStartTimer}/>
+            <QuizeQuestion quizQuestion={Quizquestions} shuffledQuestionsRef={shuffledQuestionsRef} questionNumber={questionNumber} selectedImage={selectedImage} handleOnClick={handleOnClick} handleAnswerSubmission={handleAnswerSubmission} startTimer={handleStartTimer}/>
           </>
         }
         {quizCompleted && <QuizResult quizQuestions={Quizquestions} givenAnswers={attemptedQuestions} handleStartQuiz={props.handleStartQuiz}/>}
